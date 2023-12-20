@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트-변수1</title>
+</head>
+<body>
+    <button type="button" onclick="order()">밥주세요!</button>
+    <button type="button" onclick="abcResult()">변수 a,b,c의 값은?</button>
+    <button type="button" onclick="cook()">요리합시다</button>
+    <script>
+        //내부스크립트
+        //1. 목표 설정 : "밥주세요" 버튼 클릭하면 오늘의 밥, 반찬 출력
+        //2. 절차 정리하기 : 밥주세요 버튼 클릭 -> 데이터 출력
+        //3. 필요 데이터 체크 : 버튼, 밥, 반찬
+        //4. 재사용 필요 체크 : 함수(밥,반찬)
+        //5. 데이터를 변수에 대입시키기 (대입연산자 =) 데이터를 바로 적용하면 나중에 재사용이 어렵다! 변수에 넣어서 쓰기
+        //6. 함수를 만들기 (이름 잘 짓자!중복불가)
+        //7. 변수를 함수에 적용시키기
+        //변수들~
+        var bowl = '쌀밥'; /* 이 변수 이름을 bowl이라고 선언하겠다 / 쌀밥을 변수명 bowl에 대입하겠다. */
+        var side = '김치찌개'; /* 수정 필요시 변수만 변경해주면 변경되어 출력 */
+
+        var a; 
+        console.log(a); //undefined
+        a = 1;
+        console.log(a); //1
+        a = 2;
+        console.log(a); //2
+        //자바스크립트는 절차적 언어이기 때문에 위 두 가지 결과가 다 출력된다.
+        //쓰는 위치에 따라 결과가 달라지기 때문에 최종 값만 확인하면 안 된다.
+        var b = a;
+        console.log(b); //2
+        
+        var c = a+b;
+        console.log(c);//2+2 = 4
+
+        var ingridient = 'meat'
+        var spice = 'salt'
+        spice = 'sugar'
+
+        function cook(){
+            console.log(ingridient);
+            console.log(spice);
+        }
+
+        function order(){ 
+            console.log(bowl); /* 1. 괄호 안에 바로 쌀밥이라고 쓰면 재사용 불가 */
+            console.log(side); /* 변수명 side가 console에 log로 출력된다. */
+        }
+
+        function abcResult(){
+            console.log(a)
+            console.log(b)
+            console.log(c)
+        }
+
+        /* 
+        변수 OX 
+        var 3bowl; //X
+        var bowl; //O
+        var var; //X
+        var var1; //X
+        var &test; //X
+        var $test; //O
+        */
+
+    </script>
+</body>
+</html>
