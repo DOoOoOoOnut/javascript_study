@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let, const -2</title>
+    <style>
+        button {
+            background-color: black; color: #fff; padding: 20px 30px;
+            border-radius: 20px; font-size: 2rem; margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button type="button" onclick="yum()">밥주세요🍚</button>
+        <!-- <hr> -->
+        <button type="button" onclick="yumyum()">구입하기💛</button>
+    </div>
+    <script>
+        
+        //버튼을 클릭하면 다음과 같이 출력
+        //오늘의 밥은 콩밥이고 반찬은 스팸입니다!
+        //한식만 나오는 식당이라고 가정했을 때..
+        let rice = '콩밥'
+        let side = '스팸'
+        function yum() {
+            console.log('오늘의 밥은 '+rice+'이고 반찬은 '+side+'입니다!')
+        }
+
+        //구입한 붕어빵의 수량은 2개이고 가격은 총 2000원 입니다!
+        //데이터를 변수화 시킬 때는 변수의 데이터값은 초기값 기준으로 해야 한다.
+        let item = '붕어빵'
+        let num = 1
+        let price = 1000
+        function yumyum() {
+            console.log('구입한 '+item+'의 수량은 '+num+'개이고 가격은 총 '+(price*num)+'원 입니다!')
+            num += 1;
+        }
+
+    </script>
+</body>
+</html>

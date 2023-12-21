@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable-4</title>
+</head>
+<body>
+    
+    <script defer>
+        /* 
+        변수(저장소) 
+        var 생성변수명;
+        var 생성변수명 대입연산자 대입값;
+        */
+        var a = 1;
+        var b; //b=undefined
+        b = 5 //b=5
+        var c = 10;
+        console.log(a, b, c);
+        // 콘솔로 자주 체크하며 오류 확인 ~ 주로 위쪽에 오류 있을 확률 높음
+        console.log('c=',c);
+        console.log('a=',a,'b=',b,'c=',c); // , 로 구분
+        console.log('a='+a+' b='+b+' c='+c); // 연결연산자 + 문자''안에 공백 넣어주면 가독성이 좋아짐
+        //콘솔에 어떤 속성인지 같이 표시하기 (나중에 많아지면 헷갈림)
+        console.log('----------------') // 구분선
+
+        var d = "javascript";
+        console.log('d='+d);
+        var d = "js" // var 생성키워드는 변수명을 중복선언했을 떄 중복에러 인식불가
+        console.log('d='+d);
+        let e ='객체지향언어';
+        console.log('e='+e);
+        console.log(a+e);
+        //let 생성키워드는 변수명 중복선언 시 중복에러를 인식함.
+        e ='절차적 언어'
+        console.log('e='+e);
+        console.log('----------------------')
+        const f = '상수 const는 변하지 않는다'
+        console.log('f='+f)
+        //f = 'const2'
+        //상수는 변경하려고 하면 오류 발생
+        const g = '상수는 생성과 대입이 동시에 이루어져야 한다!';
+        console.log('g='+g) 
+        </script>
+</body>
+</html>
