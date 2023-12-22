@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터타입-2</title>
+</head>
+<body>
+    
+    <script>
+        let a = 1;
+        let b = '1';
+        let c;
+        console.log('a 변수의 값은 '+a)
+        console.log(`a 변수의 값은 ${a}`) // 탬플릿 문자열 -> 백틱 기호로 묶어서 사용
+        // a 변수의 데이터타입은 000, b 테이터타입은 000, c 데이터타입은 000
+        console.log(`a 변수의 데이터타입은 ${typeof a}, b 변수의 데이터타입은 ${typeof b}, c 변수의 데이터타입은 ${typeof (c)}`)
+        // --------------------
+        console.log(`a+b 변수를 묶은 데이터타입은 ${typeof (a+b)}`)
+        console.log(`b+c 변수를 묶은 데이터타입은 ${typeof (b+c)}`)
+        console.log('----------------------')
+        // 오늘의 총 지출을 표시해주는 가계부 앱 만들기
+        // 커피 1500원
+        // 도시락 6000원
+        // 전철 비용 2000원
+        // 오늘 총 지출액은 000 원 입니다.?
+        let drink = 1500;
+        let lunch = 6000;
+        let subway = 2000;
+        let total = drink+lunch+subway
+        console.log(`오늘 총 지출액은 ${drink + lunch + subway} 원 입니다.`)
+        console.log(`오늘 총 지출액은 ${total} 원 입니다.`)
+        console.log('------------------------')
+        let dan99 = 2;
+        console.log(`${dan99} 곱하기 1은 ${dan99}`)
+        console.log(`${dan99} 곱하기 2는 ${dan99*2}`)
+        console.log(`${dan99} 곱하기 3은 ${dan99*3}`)
+        console.log(`${dan99} 곱하기 4는 ${dan99*4}`)
+        console.log(`${dan99} 곱하기 5는 ${dan99*5}`)
+        console.log(`${dan99} 곱하기 6은 ${dan99*6}`)
+        console.log(`${dan99} 곱하기 7은 ${dan99*7}`)
+        console.log(`${dan99} 곱하기 8은 ${dan99*8}`)
+        console.log(`${dan99} 곱하기 9는 ${dan99*9}`)
+        console.log('-------------------------------')
+        //월(Month) 체크하기!
+        let now = new Date(); // 현재 연월일시 모든 정보 표시 
+        console.log(now)
+        // 한꺼번에 가져온 연월일시 정보에서 월만 뽑아오기
+        let mon = now.getMonth()+1;
+        let day = now.getDate();
+        let ye = now.getFullYear();
+        console.log(mon, day, ye) // 
+        // 지금은 12월인데 왜 처음에는 11이라고 뜰까?
+        //getMonth는 시작 월을 0부터 시작한다.(0을 1월로 표시)
+        // 그래서 데이터에 +1을 해줘야 맞게 보인다.
+        //getDate는 1부터 인식하므로 위 과정 필요없음.
+        // 어떤 데이터든지 바로 쓰지 말고 변수에 우선 담고 변수 이름으로 깔끔하게 쓰기.
+        console.log(`오늘은 ${mon}월 ${day}일 입니다.`)
+        // console.log(`오늘은 ${now.getMonth()+1}월 ${now.getDAte()}일 입니다.`)
+        console.log('-----------------------')
+        // 배열
+        // 배열을 사용하지 않았을 때 (같은 주제 기준 데이터가 2개 이상일 때)
+        let color1 = 'red';
+        let color2 = 'blue';
+        console.log(color1, color2)
+        
+        // 배열을 사용한 경우
+        // 배열의 인덱스(자바스크립트 데이터 순서)는 0부터 시작한다.
+        // 배열의 length 문자열길이(갯수)는 1부터 시작한다.
+        let colorSet = new Array('red','blue');
+        // console.log(colorSet);
+        // let colorSet = ['purple','gold','white','black']
+        // let colorSet = new Array(4)
+        console.log(colorSet);
+        console.log(colorSet[0]); // 배열[호출인덱스]
+        console.log(colorSet[1]); 
+        console.log('------------------------');
+        // 배열 기초 연습
+        /* 흰색, 검은색, 초록색, 노랑색, 파랑색, 빨강색, 보라색을 배열로 저장하고 그 중 좋아하는 색상을 4개 골라서 콘솔에 출력하세요. */
+        let colors = ['white','black','green','yellow','blue','red','purple'];
+        console.log(colors[0]+' '+colors[1]+' '+colors[3]+' '+colors[6]);
+        /* fruitList 변수생성
+            좋아하는 과일 5개 저장하고 역순 출력
+        */
+        let fruitList = ['grape','strawberry','melon','tangerine','pineapple'];
+        console.log(fruitList[4]);
+        console.log(fruitList[3]);
+        console.log(fruitList[2]);
+        console.log(fruitList[1]);
+        console.log(fruitList[0]);
+    </script>
+</body>
+</html>

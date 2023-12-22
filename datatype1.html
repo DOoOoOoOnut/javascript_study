@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터타입 -1</title>
+</head>
+<body>
+    
+    <script>
+        let a = 10;
+        let b = 5;
+        console.log(a); //typeof 데이터
+        console.log(typeof a); //string(문자) number(숫자)
+        console.log(typeof(a));
+        console.log(typeof (a+b)); // 2개 이상의 데이터가 들어갈 때 괄호 필수
+        console.log(typeof(10*5));// 이렇게 적으면 안됨
+        console.log(typeof(a*b));// 이렇게 적어야 나중에 값 바뀌어도 안전
+        console.log(typeof b, a); 
+        console.log(typeof a, typeof b); 
+        // a의 데이터 타입은 000다.
+        // b의 데이터 타입은 000다.
+        console.log('a의 데이터 타입은 '+ typeof a +'(이)다.')
+        console.log('b의 데이터 타입은 '+ typeof b +'(이)다.')
+        console.log('-----------------')
+        let c = 'javascript'
+        let d = '3.14'
+        console.log(typeof c);
+        console.log(typeof d);
+        console.log(typeof (a+d)); 
+        // 숫자 + 문자 == 문자 / 하나라도 문자가 들어가면 문자가 됨.
+        // 숫자 + 숫자 == 숫자 / 문자 + 문자 == 문자
+        console.log(1+'1');
+        console.log(typeof (1+'1'));
+        console.log('--------------------------');
+        let e = '';
+        let f;
+        console.log(typeof e) // string        
+        console.log(typeof f) // undefined(정의하지 않음 = 값 대입이 안 되었다)
+        /* console.log(typeof g) */ // undefined(대상이 없음) -> 객체가 있는지 없는지는 확인하지 않고 데이터타입만 확인 => 대상이 아예 없는데 마치 있는데 오류가 난 것처럼 착각할 수 있음. -> 관리잘하자,,
+        /* console.log(g) /error */
+        // undefined(정의하지 않음) null(값이 존재하지 않는다, 비어있다)
+        let g = 1;
+        /* console.log(g); -> error / g 선언을 g typeof 아래에 써서 에러남 / 맞는 문장이어도 순서에 따라 오류가 날 수 있다. */
+        console.log(g+a);
+        console.log(g-b);
+        g = 0; // 숫자 초기화
+        g = null; //존재하는 변수값을 제거해야 할 때. / 값이 원래 있었는데 지워야 할 때!!
+        console.log(typeof g) // object     
+        console.log(g) //null
+        
+        console.log(typeof (a+null)) // number // a의 데이터와 null(비어있음)을 합친 거라서
+        console.log(typeof (b+undefined)) // number // 마찬가지. 
+
+        // var, let, const 데이터타입은> NO 없음~~!!
+        // var, let, const로 생성된 변수에 대입되는 값에 따라 데이터가 결정된다.
+        
+    </script>
+</body>
+</html>
