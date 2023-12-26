@@ -191,3 +191,53 @@ var d = 0
 * `megabox.push('A1')` // 배열의 맨 끝에 값 추가
 * `['A1']` // 결과
 * 이후에 js 코드로 일정 수 이상 추가되지 않도록 설정할 수 있음.
+
+------
+
+## 객체 Object
+
+### 속성:값{}
+* `const cat = {`
+    `color:'black',`
+    `age:1`
+`}`
+* 중괄호 안에 엔터 치고 써주기
+* 객체에는 index, length가 없음.
+* 여러 개의 데이터가 들어가는 복잡한 부분에는 객체를 많이 사용함.
+
+### 객체의 값을 따로 뺴기 
+* `변수 이름.속성`
+* `console.log(cat.color);` // black
+
+### 객체 속성에 배열 사용하기도 가능
+* `const cat2 = {`
+    `color:['흰색','노란색','검정색'],`
+    `age:2,`
+`}` // 값 부분에 대괄호 사용하기.
+* `console.log(`고양이의 털 색깔은 ${cat2.color[1]}, ${cat2.color[0]}, ${cat2.color[2]}로 이루어져 있습니다.`);`
+* 위와 같이 값 따로 불러오기 가능.
+* 속성 이름에 따옴표 넣고 띄어쓰기 가능. // 'cat type':'코리안 숏헤어'
+* 위 경우에는 속성 불러올 때 대괄호 형식으로 써야 함.
+`console.log(cat3.'cat type');` // XXXXXXX
+`console.log(cat3['cat type']);` // OOOOOOO
+
+### delete 속성 제거
+* `delete reservation.option;` // {room: 2, adult: 2, children: 1}
+* 속성 자체를 없애버림
+
+### delete로 제거한 속성 추가하기
+* `reservation.option = '금연'` // {room: 2, adult: 2, children: 1, option: '금연'}
+* 이전에 제거한 속성명을 변수 생성하듯 입력해주기.
+
+### 객체에 함수 넣기
+* `const user = {`
+    `name:'박',`
+    `age:2,`
+    `birthday:function(){`
+        `console.log('생일ㅊㅋ')`
+    `},`
+`}`
+* `console.log(user.birthday())` 
+* 값이 규칙에 따라 변하는 속성을 넣을 때는 함수를 활용한다.
+* 함수를 불러올 때는 ()괄호도 잊지 않고 써 줘야 오류 없이 가능함~
+
