@@ -233,11 +233,66 @@ var d = 0
 * `const user = {`
     `name:'박',`
     `age:2,`
-    `birthday:function(){`
+    `birthday:function(){` <!-- 익명함수 -->
         `console.log('생일ㅊㅋ')`
     `},`
 `}`
 * `console.log(user.birthday())` 
 * 값이 규칙에 따라 변하는 속성을 넣을 때는 함수를 활용한다.
 * 함수를 불러올 때는 ()괄호도 잊지 않고 써 줘야 오류 없이 가능함~
+* 익명함수 : 함수명이 없고 앞 글자가 이름 대신함
+-------------
+# 23/12/27
 
+## 자바스크립트의 역할
+* 스크립트 사용 웹 -> 동적
+* 파일 읽기와 쓰기, 키보드 입력
+* 데이터 베이스 기능
+* 비동기 통신
+* 2차원 3차원 컴퓨터 그래픽스 기능
+* 마우스 드래그 앤 드롭
+* 멀티 스레딩
+
+## BOM(Browsre Object Model)
+* window 객체는 생략 가능 / 당연히 있기 때문에
+* 객체.메서드() 형식
+
+### alert
+* `let m1 = window.alert('popup');`
+`console.log(m1);`
+*  == popup이라는 메세지를 alert로 팝업으로 띄우고 그 결과를 콘솔에 출력한다. // undefined
+* alert의 값을 콘솔에 출력.
+* 변수에 실행 메서드, 실행 함수가 들어갈 때는 그 함수 자체가 변수에 들어가는 게 아니라 그 결과값이 들어간다.
+
+### prompt
+* `const qa1 = window.prompt('당신의 나이는?','')`
+* 질문에 대한 대답 입력 가능한 팝업
+* 기본적으로 문자 데이터로 저장됨.
+
+### confirm
+* ` const ok = window.confirm('결제하시겠습니까?')`
+* true, false 형식의 데이터로 저장됨.
+
+### window.print();
+* 인쇄 창 띄우기~
+* `onclick="window.print()"` 인쇄버튼 만들기
+
+## window.location
+* 문서의 URL을 관리하는 객체 속성
+* 옆에 이중 속성이 들어감
+* assign, href,
+* 연달아 속성이 있는 경우 99% 앞이 값. 뒤는 속성이거나 메소드
+ex- window.document.write
+
+### href
+* a태그와 달리 자바스크립트 활용하여 사이트 이동해야 할 때 사용
+* `window.location.href='https://naver.com/'`
+
+## window.document
+* `window.document.write("테스트 문구")`
+* `window.document.body("테스트 문구")`
+* 현재 창의 문서 읽기, 쓰기, 수정
+
+## window.open(url,target,features)
+* `window.open('https://google.com','_blank','width=500, height=300')`
+* 새로운 창을 열거나 새 탭을 생성하는 메서드
