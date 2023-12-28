@@ -266,6 +266,7 @@ var d = 0
 
 ### prompt
 * `const qa1 = window.prompt('당신의 나이는?','')`
+* window.prompt(질문,대답) // 답변 생략가능
 * 질문에 대한 대답 입력 가능한 팝업
 * 기본적으로 문자 데이터로 저장됨.
 
@@ -296,3 +297,130 @@ ex- window.document.write
 ## window.open(url,target,features)
 * `window.open('https://google.com','_blank','width=500, height=300')`
 * 새로운 창을 열거나 새 탭을 생성하는 메서드
+
+----------
+# 23/12/28
+
+## DOM(Document Object Model)
+* DOM 트리를 구성하는 객체 -> 노드(Node)
+* HTML 요소를 가리키는 객체 -> HTML 요소 노드
+* 텍스트를 가리키는 객체 -> 텍스트 노드
+* 탭, 공백, 줄바꿈 -> 공백 노드
+
+## getElementsByTagName()
+
+* 저장된 태그 이름을 가진 모든 HTML 요소를 찾아 HTML 노드로 변환
+* 대소문자 구별 주의, s 붙음 주의
+* CSS와 다르게 부모를 설정하면 그 안에 있는 자식, 자손 모두를 인식함.
+-> 태그를 같이 확인하며 맞는 인덱스를 잘 작성해야 한다!!
+
+### 여러 상황에 활용하기 
+
+* 필요한 TagNode가 2개 이상일 때 1개만 동적 기능 적용이 필요하다면?
+-> 변수 선언 시 [index번호] 설정하고 대입 
+* ex - `const h1Tag = document.getElementsByTagName('h1')[1]`
+
+* 필요한 TagNode가 2개 이상일 때 여러 개에 동적 기능 적용이 필요하다면?
+-> 변수 선언 시에는 그냥 전부 대입, 호출 시에 필요한 [index번호] 사용.
+* ex - `console.log(h1Tag[0]);`
+
+### DOM Node 변수 지정 시
+
+* HTMLCollection 결과는 변수가 정상인지 오류인지 간단한 확인 시에만 사용! 
+* 실제로 DOM Node 변수를 이용한 동적인 결과를 만들어야 할 때는 직접적인 접근으로 대상을 하나씩 개별 인식하게 만들어야 한다. [index]
+
+* `const ulTag = document.getElementsByTagName('ul')[0];`
+* html에 ul이 하나밖에 없는데 [0]을 왜 붙여야 할까?
+-> 정확히 원하는 태그를 잡아야 하기 때문에.
+* [0] 붙이지 않으면 HTMLCollection으로 출력
+* 즉, 태그가 파일에 하나밖에 없더라도 정확히 원하는 대상을 인식하기 위해 인덱스를 붙여 주는 것이 좋다.
+
+* `let a2Tag = liTag[1].getElementsByTagName('a');`
+* == ul>li*4>a 중 두 번째 a를 잡은 경우
+* css 선택자처럼 폭포식으로 선택하되, 작성은 바로 앞의 부모만 한다.
+* 두번째 li의 자식 a를 선택하는 것이므로 liTag에 인덱스[1]을 붙여준다.
+
+## getElenentsByclassName()
+
+* 지정된 클래스 이름을 가진 모든 HTML 요소를 찾아 HTML 노드로 반환.
+* 자유도가 높기 때문에 조심! 누구에게 적용하고 싶은지 정확히 확인하고 사용하자.
+
+* `const ulT = document.getElementsByTagName('ul')[0];`
+`const listT = ulT.getElementsByClassName('list');`
+* ul의 자식 li 중 클래스 list를 잡는 것이므로 ul태그를 먼저 변수에 담아주기 -> 클래스 변수 선언 시 ul태그 변수를 넣어주기.
+
+## getElementByID()
+
+* 지정된 아이디 이름을 가진 모든 HTML 요소를 찾아 HTML 노드로 반환.
+* 어차피 문서에 하나씩밖에 존재하지 않기 때문에 부모 작성할 필요 없음~ 다 document로 작성.
+* `const main_title = document.getElementById('main_title')`
+
+## querySelector()
+
+* 지정된 아이디, 클래스 ,태그 이름을 가진 첫번째 HTML요소를 찾아 HYML 노드로 반환 (최신기능!)
+
+## querySelectorAll()
+
+* 지정된 아이디, 클래스, 태그 이름을 가진 첫번쨰 HTML 요소를 찾아 HTML 노드로 반환
+* 여러 개의 Node List를 반환할 수도 있고 첫 번째 Node list를 반환할 수도 있음!
+
+## 명시적, 암시적 형변환
+
+### 암시적 형변환
+* 스크립트가 개발자 동의 없이 자동으로 데이터 형태를 결정하는 것
+ex- 숫자+문자 = 문자
+
+### 명시적 형변환
+* 개발자가 직접 스크립트 이용해 어떤 형으로 바꿀지 명시해주는 것
+* Number() -> 데이터 타입을 숫자로 변형
+
+-------------
+
+## 자바스크립트 문법(지대중요)
+
+* 자바스크립트는 오른쪽에서 왼쪽으로, 괄호 안부터 읽음
+
+### 맞는 예시
+* 객체.속성.메서드()
+* 객체.메서드()
+* 메서드(객체.속성)
+* 메서드(객체.메서드)
+* 메서드(객체,속성,메서드)
+
+### 틀린 예시
+* 객체.메서드(),메서드() -> XXXXXXXXXXXXX
+* 객체.메서드().속성 -> XXXXXXXXXXXXXXX
+
+--------------
+
+### NAN == Not a Number
+* 숫자만 입력하는 곳에 문자 쓸 경우 출력 
+
+--------------------
+
+## Number()
+* 문자타입 데이터를 숫자타입으로 변경해주는 메서드
+ 
+## value 속성
+* form 태그(input, button, textarea, select, option)에 들어가는 값 속성
+* form 태그 내에 작성했을 땐 미리 입력된 값 표현 가능
+* javascript의 DOM.속성 `ex)DOM.value` 로 처리했을 떈 해당 DOM의 미리 입력된 값부터 사용자가 입력하는 신규 값까지 모두 인식할 수 있다.
+1. 쇼핑몰의 상품 수량
+2. 쇼핑몰의 총 주문 가격
+3. 예약페이지의 여행 인원 수 등..
+* 주의! value 속성은 form 전용이므로 다른 태그일 때 해당 값을 알고 싶다면 다른 속성 및 메서드를 사용해야 한다.
+* 주의! `DOM.value`로 값 처리 시 숫자를 쓰더라도 문자열(string)으로 인식하기 떄문에 필요한 경우 `Number()`메서드를 활용해 (Number) 데이터타입으로 변환해야 한다.  
+
+### input에 작성한 문구를 콘솔에 나오게 하려면?
+* `console.log(numInput.value); ` // 메서드(객체.속성)
+
+### input type:number 에 작성한 문자데이터를 숫자데이터로 바꾸려면? // (dom_type1.js 참고)
+* `let result = Number(numInput.value)` 
+* `console.log(typeof numInput.value);` //일회성
+
+---------------
+
+### ⚠ 기억하기!
+1. 중간마다 콘솔로 확인하기
+2. 단계별로 결과 생각하며 하기 / 헷갈리면 주석으로 그 단계까지의 결과 적어두기
+3. 순서와 위치도 생각하며 하자~
