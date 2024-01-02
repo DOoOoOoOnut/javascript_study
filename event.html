@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - 이벤트처리기</title>
+    <style>
+        .box {display: flex; flex-flow: column nowrap;}
+        .box button {
+            background-color: black; color: aliceblue;
+            padding: 20px 10px; border-radius: 20px;
+            font-size: 1.5rem; margin-bottom: 20px;
+        }
+        .box button:hover {
+            background-color: indigo;
+        }
+        .box form input {
+            font-size: 1rem;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        h1 {font-size: 1.5rem;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button type="button" id="btn1">click button🐰</button>
+        <button type="button" id="btn2">click button💨</button>
+        <button type="button" id="btn3">gO Google🎁</button>
+        <h1>본인 인증🙋🏻‍♀️</h1>
+        <form action="#" method="post">
+            <input type="text" id="certified_text" placeholder="인증번호 입력" maxlength="6">
+            <button type="button" id="certified_btn">인증번호 확인</button>
+        </form>
+        <h1>직장인 수입 계산기🌝</h1>
+        <form action="#" method="get" id="pay">
+            <input type="text" id="result1" placeholder="이번 달 월급 입력">
+            <input type="text" id="result2" placeholder="이번 달 보너스 입력">
+            <button type="button" id="answer_btn">총 수입 보기</button>
+        </form>
+        <h1>이자 100원💲 주는<br>자바스크립트 은행</h1>
+        <form action="#" method="get" id="bank">
+            <input type="text" id="bank_input" placeholder="입금액">
+            <input type="text" id="bank_price" placeholder="총 잔액" readonly>
+            <button type="button" id="bank_btn">입금하기</button>
+        </form>
+    </div>
+    <!-- <script src="./script/event1.js"></script> -->
+    <script src="./script/event2.js"></script>
+</body>
+</html>
