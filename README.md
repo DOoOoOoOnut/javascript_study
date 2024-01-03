@@ -507,6 +507,7 @@ onload HTML 요소를 모두 읽었을 때
 * `console.log(h_text[0].baseURI` IP주소 출력
 *  `headerChild[1].innerText = "로고";` 
 innerText로 읽을 때는 텍스트만 읽지만, 대입연산자를 사용하면 h1안의 모든 자식 자손을 통째로 바꿔버림 == `<h1><a>logo</a></h1>` -> `<h1>로고</h1>`
+* 텍스트 안에 `<br>`등 태그가 들어갈 때는 `innerText`가 아닌 `innerHTML` 써줘야 인식
 
 ### 형제 노드 제어하기
 
