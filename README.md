@@ -475,10 +475,44 @@ onload HTML 요소를 모두 읽었을 때
 1. 객체.객체.속성 = '속성:값; 속성:값; 속성:값;'
 * `aNode[0].parentNode.style = 'background-color:yellow';`
 * 따옴표 안에 css처럼 원하는 속성 다 쓰기
-* 단, 나중에 다른 줄에 추가시 앞에 쓴 내용은 사라짐.
+* 2번 이상 생성 시 이전 속성:값 초기화
 
 2. 객체.객체.속성.속성 = '값'
 * `aNode[1].parentNode.style.backgroundColor = 'aqua';`
 *  - 부분은 카멜 표기법으로 바꿔줘야 함
+* 2번 이상 생성 시 기존 속성값에 이어서 추가됨.
 * 한번에 한가지 속성만 가능, 추가시 줄 추가해야 함
 
+----
+# 24/1/3
+## DOM 관계속성
+* 속성.속성 형식으로 연속 사용 가능.
+
+### 부모 노드 제어하기
+
+* parentNode 부모 노드
+* parentElement 부모 요소
+* `자식 또는 자손노드.parentElement` -> 특정 자식의 부모 요소 잡기
+
+### 자식 노드 제어하기
+
+* childNodes 자식 노드 / (공백도 잡힘) 
+* children 자식 요소 
+* childElementCount 자식요소 갯수 카운트 (쇼핑몰 사용)
+
+* childNode 텍스트노드가 필요할 때 children 요소 노드가 필요할 때 주로 사용
+
+* `console.log(h_text[0].length` length 글자수 출력
+* `console.log(h_text[0].data` data 데이터 출력
+* `console.log(h_text[0].baseURI` IP주소 출력
+*  `headerChild[1].innerText = "로고";` 
+innerText로 읽을 때는 텍스트만 읽지만, 대입연산자를 사용하면 h1안의 모든 자식 자손을 통째로 바꿔버림 == `<h1><a>logo</a></h1>` -> `<h1>로고</h1>`
+
+### 형제 노드 제어하기
+
+*  이전 형제 previousSibling, previousElementalSibling
+*  다음 형제 nextSibling, nextElementalSibling
+
+### 첫째, 막내 자식 노드 잡기
+* firstChild, firstElementChild
+* lastChild, lastElementChild
