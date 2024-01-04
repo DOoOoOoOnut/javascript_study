@@ -517,3 +517,51 @@ innerText로 읽을 때는 텍스트만 읽지만, 대입연산자를 사용하�
 ### 첫째, 막내 자식 노드 잡기
 * firstChild, firstElementChild
 * lastChild, lastElementChild
+
+### 객체.innerHTML 
+* `객체.innerHTML;` 특정 객체의 자식, 자손 HTML 읽기
+* `객체.innerHTML = 값;` HTML 삽입 및 변경
+### innerText 속성
+* `객체.innerText;` 객체의 자식,자손 텍스트 노드 읽기
+* `객체.innerText = 값;` 텍스트 노드 삽입 및 변경
+
+### 객체.appendChild()
+* 객체의 마지막 자식 위치로 () 추가
+* `객체.appendChild();`
+* `객체.객체.appendChild()`
+* `객체.속성.appendChild()`
+* `객체.속성.속성.appendChild()`
+
+### createElement
+* `document.createElement()`
+* 자바스크립트 내에서 동적인 용도로 요소 노드 생성
+
+----
+
+## 데이터를 쌓는 방법 
+
+* `1. 객체.innerHTML += '내용` // 복합대입연산자 사용
+* `2. 객체.appendChild(삽입노드);` // 삽입노드 사용
+
+* `const error_create = document.createElement('ul');`
+
+loginBtn.addEventListener('click',function(){
+    error_create.innerHTML += '<li>아이디 입력하세요</li>';
+    error.appendChild(error_create);
+    console.log(error);
+    error.innerHTML = '<em>아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다신 확인해주세요.</em>';
+    console.log(error);
+})
+
+----
+## insertBefore
+
+* 객체의 첫번째 자식노드 추가
+* `객체.insertBefore(삽입노드, 기존 시작 자식노드)`
+* `부모.insertBefore(삽입노드, 부모.firstChild)`
+
+----
+## 이벤트들
+
+* input : input에 입력했을 때 실행
+* blur : input을 벗어날 때 실행

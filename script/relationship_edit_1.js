@@ -27,6 +27,6 @@ loginBtn.addEventListener('click',function(){
     error_create.innerHTML += '<li>아이디 입력하세요</li>';
     error.appendChild(error_create);
     console.log(error);
-    /* error.innerHTML = '<em>아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다신 확인해주세요.</em>';
-    console.log(error); */
+    error.innerHTML = '<em>아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다신 확인해주세요.</em>';
+    console.log(error);
 })
