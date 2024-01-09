@@ -536,6 +536,9 @@ innerText로 읽을 때는 텍스트만 읽지만, 대입연산자를 사용하�
 * `document.createElement()`
 * 자바스크립트 내에서 동적인 용도로 요소 노드 생성
 
+### removeChild(), remove()
+* removeChild() 객체 제거
+* remove() 자식만 제거
 ----
 
 ## 데이터를 쌓는 방법 
@@ -621,4 +624,15 @@ loginBtn.addEventListener('click',function(){
 * 세미나
 
 # 🍦 변수와 출력 구분 잘 해서 쓰기. 만들어둔 변수로 효율적으로 출력하기!!
+
+## 함수스코프(function-scope) = 지역변수와 전역변수
+* == 함수가 접근할 수 있는 위치
+
+1. 지역변수 (block-scope)
+* 함수 내부에서 선언된 변수
+* 함수 내에서만 접근 가능
+
+2. 전역변수 (global-scope)
+* 함수 외부에서 선언된 변수
+* 스크립트 전체 어디서든 접근 가능
 
