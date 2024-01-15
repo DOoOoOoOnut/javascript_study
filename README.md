@@ -722,3 +722,9 @@ loginBtn.addEventListener('click',function(){
 
 ## 조건문 else문
 * 특정 조건이 거짓일 때 실행할 코드 블록을 정의
+
+## else if
+* 특정 조건이 거짓일 때 다시 조건 설정
+
+# 1/15
+## 
