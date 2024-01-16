@@ -726,5 +726,40 @@ loginBtn.addEventListener('click',function(){
 ## else if
 * 특정 조건이 거짓일 때 다시 조건 설정
 
-# 1/15
-## 
+---
+# 1/16
+
+## 자바스크립트 클래스로 스타일 적용
+
+## 스타일 적용 순서 `인라인 > # > . > 태그` 중요!!
+* 마지막만 확인하는 게 아니라 총 순위를 합쳐 계산한다.
+ex -> .list li > li
+* `!important` 강제 최우선순위 배정 -> 주의 : 남발하면 오류!
+
+### DOM.className
+* `li[1].className = 'design_set1';`
+* `li[1].className += ' design_set2'`
+* js로 적용하는 클래스 생성 시 클래스 이름은 태그나 요소특징이 아닌 동적인 의미 및 그 안에 CSS 속성들의 특징으로 지어준다 (ex> layout, design set 등)
+* 우선순위가 같으면 작성 순서에 따라 가장 최신에 작성한 것 우선으로 적용된다.
+* 두 번째부터 새로 추가하는 클래스에는 +=, 공백 넣어줘야 앞의 것과 함께 정상적으로 인식된다.
+
+### DOM.classList.add()
+* `li[1].classList.add('design_set1','design_set2')`
+* 공백 없이 한번에 두 개 이상 클래스 넣기 가능
+
+### DOM.classList.remove()
+* `li[1].classList.remove('design_set1')`
+* 대상에서 클래스 제거
+
+### DOM.classList.toggle()
+* `li[2].classList.toggle('design_set1')`
+* 스위치처럼 on,off 가능
+
+### DOM.classList.replace('기존클래스','변경클래스')
+* `this.classList.replace('design_set1','designset_2')`
+* 기존 클래스를 변경 클래스로 대체함
+
+### DOM.classList.contains()
+* `li[5].classList.contains('design_set1')`
+* DOM에 해당 클래스가 있는지 확인
+* 참, 거짓으로 논리데이터 반환 -> if문과 함께 활용 가능
