@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegEx</title>
+    <style>
+        #userId {padding: 15px; margin-bottom: 15px;}
+        .error {color: #f00; font-size: 0.8rem;}
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="아이디를 입력하세요" id="userId">
+    <input type="text" placeholder="전화번호를 입력하세요" id="phone">
+    <div class="error"></div>
+
+    <script>
+        const regex1 = /\d{3}-\d{4}-\d{4}/;
+        const userId = document.querySelector('#userId')
+        const phone = document.querySelector('#phone')
+        const error = document.querySelector('.error')
+        console.log(userId)
+        phone.addEventListener('input',()=>{
+            if(phone.value == regex1){
+                error.innerHTML = '잘못 입력하셨습니다'
+                phone.value = ''
+            }
+        })
+
+        // 아이디에 영어만 입력 가능
+        userId.addEventListener('input',()=>{
+            /* if(!/^[a-zA-Z]+$/.test(userId.value)){
+                alert(('영어만 입력 가능합니다.'))
+            } */
+            if(!/^\d+$/.test(userId.value) && !userId.value == ''){
+                error.innerHTML = '숫자만 입력 가능합니다'
+                userId.value = ''
+            }
+        })
+
+        // 정규표현식 RegEx
+        // "/" 정규표현식의 시작&끝
+        let result
+        result = /별로|최악|비추/.test('구매하지 마세요. 진짜 별로에요!')
+        console.log(result)
+
+        result = /fool/i.test('Im not a Fool') // 대소문자 모두 구별
+        console.log(result)
+
+        
+    </script>
+</body>
+</html>
