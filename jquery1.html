@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery-1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>title</h1>
+    <p class="contents">contents</p>
+    <p id="address">address</p>
+    <button type="button" id="btn">click</button>
+    <script>
+
+        // 제이쿼리는 자바스크립트의 DOM 요소를 쉽게 사용할 수 있도록 만들어진 라이브러리 언어이다.
+        // 자바스크립트에 DOM에 관련한 속성, 메서드(함수)등이 제이쿼리에서 쉽게 사용할 수 있도록 문법적으로 변경되었기 때문에 제이쿼리 변수를 사용하려면 속성, 메서드도 제이쿼리용으로 사용해야 한다.
+        const h1Tag = $('h1')
+        const contents = $('.contents')
+        const address = $('#address')
+        const btn = $('#btn')
+        console.log(h1Tag,contents,address,btn)
+
+        // DOM.css('속성','값')
+        h1Tag.css('color','red')
+        // 제이쿼리 변수를 강제로 자바스크립트 변수로 바꿔주는 함수
+        h1Tag.get(0).style.color = 'red'
+
+        h1Tag.hide() //DOM.style.display = 'none'
+        btn.on('click',function(){
+            // h1Tag.show() //DOM.style.display = 'block' // flex나 grid는 직접 해야함
+            // h1Tag.css('display','flex')
+            // 제이쿼리 애니메이션
+            // h1Tag.fadeIn(2000)
+            // h1Tag.fadeToggle(2000)
+            // h1Tag.slideDown(2000)
+            // h1Tag.slideUp(2000)
+            h1Tag.slideToggle(2000)
+        })
+
+        contents.animate({
+            opacity:'0.5s',
+            color:'#ff0',
+        },1000)
+
+        $('#address').css('background-color','#ff0')
+        
+    </script>
+</body>
+</html>
