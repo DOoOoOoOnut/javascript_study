@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page-1</title>
+    <link rel="stylesheet" href="./jquery.fullPage.css">
+    <style>
+        /* * {transition: all 1s;} */
+        .wrap {}
+        .wrap .container {}
+        .wrap .container:nth-child(1) {background-color: lightblue;}
+        .wrap .container:nth-child(2) {background-color: lightcoral;}
+        .wrap .container:nth-child(3) {background-color: lightgreen; height:500px !important;}
+        .wrap .container:nth-child(4) {background-color: lightgoldenrodyellow;}
+        /* css 파일에 크기, 스크롤, 애니메이션 정보 있기 때문에 따로 입력 안해도 됨 */
+        /* html 태그 이름은 자유지만 fullpage 연결시에는 페이지로 넘어가는 div에 추가 클래스 section을 붙여줘야 한다 */
+        nav {position: fixed; left: 50px; top: 50px; z-index: 99;}
+        nav a {}
+        @keyframes bg {
+            0% {transform: translateX(0);}
+            100% {transform: translateX(200px);}
+        }
+        .move_bg {animation: bg 5s;}
+        </style>
+</head>
+<body>
+    <nav>
+        <a href="#a">a</a>
+        <a href="#b">b</a>
+        <a href="#c">c</a>
+        <a href="#d">d</a>
+    </nav>
+    <div class="wrap">
+        <div class="container section">1</div>
+        <div class="container section s2" >2</div>
+        <div class="container section s3" fp-auto-height>3</div>
+        <div class="container section">4</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./jquery.fullPage.js"></script>
+    <script>
+        $('.wrap').fullpage({
+            //속성:값, 속성:값,
+            scrollBar:true,//스크롤바 표시하기 (기본값 false)
+            scrollingSpeed:500,//스크롤바 전환속도(기본값 1000)
+            navigation:true,
+            navigationTooltips:['아무말','제목','title','가나다'],//네비게이션에 마우스 올리면 제목 표시
+            showActiveTolltip:true,//자동으로 제목 표시(기본값:false)
+            menu:'nav',// 상단 메뉴 클릭 시 해당 메뉴 위치로 이동
+            anchors:['a','b','c','d'],//메뉴 a #이름과 일치시킨 이름 작성
+            // <a href="#a"> 샵 뒤에 a와 anchors ['a'] 일치해야 함! 이름은 자유
+            //ex) <a href="#title">이면 anchors['title']
+            // 자바스크립트 쓰려면 get인덱스 사용
+            // $(제이쿼리대상).get(인덱스).자바스크립트 사용가능
+            // $(제이쿼리대상).style.top = '50px' 불가-자바스크립트 문법임
+            // $(제이쿼리대상).get(0).style.top = '50px' 가능!
+            // get(index)라는 메서드가 제이쿼리와 자바스크립트 연결해주는 매개
+            // 매개변수 index, nextIndex, direction 이름은 자유
+            /* onLeave:function(index, nextIndex, direction){
+                console.log(index, nextIndex, direction)
+                if(index == 1){//index가 1과 같으면(즉,2번째 대상)
+                    //디자인변경하기
+                    $('.s2').css('background-color','skyblue')//제이쿼리css
+                    $('.s2').get(0).style.border = '5px solid #fff'//제이쿼리css
+                }
+                if(index == 2){
+                    $('.s3').get(0).classList.add('move_bg')
+                }else{
+                    $('.s3').get(0).classList.remove('move_bg')
+                }
+            } */
+            // 단, index로 인식하게 되면 아래에서 위로 올라갈 때 인식이 원활하지 않아 버벅이는 것을 볼 수 있다.
+            // anchor로 인식하면 이런 문제 해결 가능!
+            // anchors 명칭과 함께하는 fullpage 위치 인식 함수
+            // 현재 anchors 명칭은 a,b,c,d
+            afterLoad:function(anchor,index){
+                console.log(anchor, index) // 확인
+                if(anchor == 'b'){ // 앵커의 위치가 b와 같으면
+                    $('.s2').get(0).classList.add('move_bg')
+                }else{
+                    $('.s2').get(0).classList.remove('move_bg')
+                }
+            }
+            // 중요! 기억할것
+            // afterLoad를 fullpage에서 쓰려면 반드시~!
+            // anchors 이름과 연동하기 때문에 꼭 anchors 속성을 써줘야 함
+        })
+        // 만약 fullpage 속성으로 스크롤 전환을 지금처럼 모두 100vh가 아니라 특정 section 높이가 짧다면??
+        // html태그내에 fp-auto-height 속성 적용, css에서 높이 적용할 때도 !important 써주기
+    </script>
+</body>
+</html>
