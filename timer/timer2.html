@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        .slider_wrap {
+            width: 500px; border: 5px solid black;
+            margin: 50px auto 0;
+        }
+        .slider_wrap .slide_container {
+            position: relative;
+        }
+        .slider_wrap .slide_container .slide {
+            width: 500px; height: 350px; font-size: 5rem;
+            position: absolute; left: 0; top: 0;
+            opacity: 0; transition: opacity 0.7s;
+        }
+        .slider_wrap .slide_container .slide1 {background-color: lightsalmon; opacity: 1;}
+        .slider_wrap .slide_container .slide2 {background-color: lightblue;}
+        .slider_wrap .slide_container .slide3 {background-color: lightcoral;}
+        button {
+            cursor: pointer;
+            padding: 10px; display: inline-block; position: relative; left: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider_wrap">
+        <div class="slide_container">
+            <div class="slide slide1">1</div>
+            <div class="slide slide2">2</div>
+            <div class="slide slide3">3</div>
+        </div>
+    </div>
+    <!-- <button type="button" id="pause">일시정지</button>
+    <button type="button" id="play">재생</button> -->
+    
+    <script>
+        let num = 0;
+        const slides = document.querySelectorAll('.slide')
+        
+        function slide_move(){
+            num++
+            if(num > 2){
+                num = 0
+                for(let i of slides){i.style.opacity=0}
+            }
+            console.log(slides[num])
+            slides[num].style.opacity = 1
+        }
+        let timer = setInterval(slide_move, 1000)
+        
+
+    </script>
+</body>
+</html>

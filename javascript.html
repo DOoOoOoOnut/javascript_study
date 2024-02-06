@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript개념</title>
+</head>
+<body>
+    <h1>자바스크립트의 동작 이해</h1>
+    <dl>
+        <dt>STACK</dt>
+        <dd>스택이란 실행내용을 담고 있는 자료구조</dd>
+        <dd>싱글쓰레드로 동작하며 함수 호출을 관리한다</dd>
+        <dd>동기적&절차적으로 함수의 내용을 스택에서 처리하고 처리한 내용은 스택에서 제거한다.// 내용을 쌓는 것이 아닌 이미 처리한, 사용하지 않는 내용은 제거</dd>
+        <dd>실행 내용을 담고 있는 자료구조</dd>
+        <dt>HEAP </dt>
+        <dd>메모리 힙 // 자료저장공간(변수,객체,배열 등등)</dd>
+        <dd>변수,배열,객체 등을 모여두는 자료저장공간</dd>
+        <dt>Que</dt>
+        <dd>비동기 작업을 일시적으로 저장하는 장소</dd>
+        <dd>비동기 호출이 일어났을 때 동기순서를 무시하고 Stack에 들어가서 처리된다.</dd>
+        <dd>특정 조건이 충족되었을 때(ex 사용자의 요청이 있을 때 / 이벤트라고 생각하면 쉬움/ 로그인 버튼을 눌렀을 때 등등) Stack으로 이동되는 임시저장소 // 비동기 처리</dd>
+    </dl>
+    <script>
+        // 비동기함수 (면접 단골 질문!)
+        // 자바스크립트의 개념
+        /* 
+        자바스크립트는 호출 스택(싱글쓰레드(single-threaded))이 한개다.
+        스택 > 동적요소가 실행되는 공간 // 중요중요
+        스택 하나 = 싱글쓰레드 / 스택 하나 이상 = 멀티쓰레드
+
+        자바스크립트는 작성된 코드를 한 줄씩 순차적으로 실행한다(동기식)
+        위 -> 아래로 순차적으로 실행하기 때문에 절차적 언어라고도 한다
+        앞의 한 작업이 (스택에서) 끝나야 다음 작업을 (스택에서) 실행한다(blocking)
+        */
+        // 자바스크립트는 원래 한줄씩 순차적으로 실행하는 동기식 언어이지만, 자바스크립트가 클라이언트쪽 뿐만 아니라 서버 쪽에도 사용되게 되며
+        /* 비동기식 > 절차를 무시하고 강제 실행
+        예시 - 로그인 페이지의 다양한 자바스크립트 중 순서 무시하고 로그인 우선으로 실행
+        */
+        /* 1~10까지 자바스크립트를 실행 중인데 3번을 읽던 중 비동기가 일어났다?? 3까지 읽은 내용을 잠깐 멈추고 Que에 있던 내용이 스택으로 들어옴, 그 이후 다시 4부터 실행 */
+
+
+        // stack 이해하기
+        /* function func1(x,y){
+            return x*y
+        }
+        function func2(x){
+            let s = func1(x,x);
+            console.log(s)
+        }
+        func2(5) */
+
+        // 동기적 절차에 따라 stack 생각해보기~~~~
+
+        // 1. func2가 호출되어 실행됨(함수는 호출과 실행이 별개이므로)
+        // 2. func1(x,x)의 x에 5라는 값이 대입 > fun1이 실행됨
+        // 3. func1이 반환한 25라는 결과가 s에 담김 > s가 heap에 저장됨
+        // 4. console.log로 console에 값이 호출됨.
+
+        // 스택 순서: 빈 스택 > func2 > func2: let s = func1(x,x); > func2: console.log(s) > func2(점검단계) > 빈 스택
+        // 자바스크립트는 싱글 쓰레드이므로 실행한 내용은 스택에서 사라진다는 것을 기억하자
+        // 위 순서처럼 하나의 스택에 내용 실행 > 지우기를 반복하며 자바스크립트가 실행된다.
+
+        // 이 과정에서 heap에는 let s가 남고, 이 내용은 지워지는 건 아니고 쌓임 >> 헷갈리지 말기!!
+
+        // 깃허브 깃 sass 비동기(서버) 최신 스크립트 ecma6 이후 let const 차이 자바스크립트가 뭔지 내용적 설명 heap과 stack que 차이 동기와 비동기 차이 등등 다 물어볼 수 있음
+
+
+        // 비동기 Que 활용 1. 콜백함수(callback functions)
+        // 특정 작업이 완료될때까지 기다리지 않고 다음 코드를 실행하는 함수
+        // 네트워크 요청, 파일 읽기, 타이머, 이벤트 등
+        // 비동기 처리 => 콜백함수, Promise, ECMA6 async/await (면접에서 많이물어봄)
+        
+        // 콜백함수?
+        // 함수의 매개변수로 전달되어 필요할 때 호출되는 함수개념
+        // 콜백은 콜백에서 콜백 쌓아서 부르는 게 가능하기 때문에 코드가 자칫 복잡해질 수 있어서 콜백헬(callback hell)이라는 별명을 가지고 있다.
+        // 타이머와 콜백함수가 함께 활용되는 경우 많음
+        
+        /* function func1(call){
+            // call() // 매개변수에 들어간 함수호출
+            setTimeout(()=>{
+                console.log('A')
+            },1000)
+            setTimeout(()=>{
+                console.log('C')
+            },500)
+            call()
+        }
+        function func2(){
+            console.log('B')
+        }
+        func1(()=>{func2()}) */ // callback
+        // 매개변수 자리에 함수를 넣기 
+        // func1은 -> func2가 실행되는 함수이다.
+        // call이라는 매개변수에 func2를 넣겠다.
+        // 콜백함수란 위와 같이 다른 함수의 매개변수에 함수를 전달하는 것! 함수안의 함수안의 함수.. 마트료시카..
+
+        // 코드가 위와 같은 경우
+        // 1. func1(()=>{func2()})이 호출됨.(stack)
+        // 2. func1에서 setTimeoutA가 Que로 이동
+        // 3. func1에서 setTimeoutC가 Que로 이동
+        // 4. call() 실행 (stack)
+        // 5. 조건이 완성된 setTimeoutC 실행(stack)
+        // 6. 조건이 완성된 setTimeoutA 실행(stack)
+        // 7. 그러므로, 콘솔에 나오는 순서는 B,C,A가 된다.
+        
+        // 비동기 Que 활용 2. promise ES6
+        /* 
+            프로미즈는 서버에서 받아온 JSON, DB, API 등의 코드를 수행하는 JS
+            => 비동기작업의 성공과 실패를 나타내는 함수
+
+            프로미즈의 3개념
+            대기(pending), 이행(fullfield), 실패(rejected)
+
+            이행(then, 제한X, 필요한만큼 선언가능) 
+            실패(catch, 1번 사용가능) if문의 else랑 비슷
+        */
+        
+        // 1 프로미즈 함수 2스택결과 보기워한 함수
+        /* function func1(){
+            return new Promise((a,b)=>{
+                setTimeout(()=>{
+                    console.log('A')
+                    a()
+                },2000)
+            })
+        }
+        function func2(){
+            console.log('B')
+        }
+        func1()
+            .then(()=>{func2()}) // then은 promise실행이므로 promise의 매개변수에 ()=>{func2()}를 넣은 것임. (promise의 매개변수는 두개지만 하나만 넣어서 자동으로 a에 들어감)
+            .catch(error=>{
+                console.error(`에러는${error.message}`)
+            })// er,error메세지라 써도 상관없음 */
+
+
+        // 1. func1 실행
+        // 2. promise 함수가 Que에 저장됨 (promise가 then인지 catch인지 아직 결정이 안 났기 때문)
+        // 3. setTimeout이 Que에 저장됨 (이 경우, 시간만 지난다고 실행되는 것이 아니라, promise가 then이어야 한다는 조건도 추가됨)
+
+        // 4. A가 콘솔에 출력
+
+        // 비동기 Que 활용 3. async, await
+        // 코드의 가독성과 유지보수성 향상에 도움을 주는 JS
+        // async 비동기 함수임을 선언 ex) async function
+        // await 키워드 "Promise"가 완료될때까지 대기하는 대기상태(pending)동안 일시정지하게 만들어주는 유지보수 향상에 도움주는 JS
+        // await를 안 적을 시 promise 대시상태동안 비동기가 처리될 준비가 됐는지 자바스크립트가 계속 확인하기 때문에 stack작업의 속도가 떨어질 수 있다. 그래서 잠시 일시정지를 await시켜서 유지보수성을 향상시킨다.
+
+        /* async function func1(){
+            return Promise.resolve(1);
+            // 결과값만 반환하면 될 때 사용
+            // resolve(이행)된 기준으로 성공했을 때 1이라는 값을 반환하겠다.
+        }
+
+        func1()
+            .then(alert) // 성공하면 alert로 값을 반환하겠다.
+            .catch(error=>{console.log('error:',error.message)}) */
+
+        // 예제2
+
+        async function func1(){
+            let pro = new Promise((a,b)=>{
+                setTimeout(()=>{
+                    console.log('A')
+                },2000)
+                a()
+                b()
+            })
+            let result = await pro;
+
+        }
+        function func2(){
+            console.log('B')
+        }
+        function func3(){
+            console.log('C')
+        }
+        func1()
+            .then(()=>{func2()})
+            .then(()=>{func3()})
+            .catch(error=>{console.error('에러메세지 출력')})
+
+        // 1. 
+    </script>
+</body>
+</html>
