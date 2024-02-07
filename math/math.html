@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <input type="text" id="num">
+    <button type="button" id="btn">버튼</button>
+    <p class="result"></p>
+
+    <script src="./data.js"></script>
+    <script>
+        const txt = document.querySelector('#txt')
+        const num = document.querySelector('#num')
+        const btn = document.querySelector('#btn')
+        const result = document.querySelector('.result')
+        let min_result
+        
+
+        btn.addEventListener('click',()=>{
+            min_result = Math.max(data[0].price,data[1].price,data[2].price)
+            for(i of data){
+                if(i.price == min_result){result.innerHTML = `${i.name + i.price}원`}
+            }
+            /* txt.value = Math.min(1,10,-100)
+            num.value = Math.min(1,2,3,4,5) // 가장 작은 값 출력 / 최저가 넣을 때 사용해보기 */
+            /* txt.value = Math.abs(-1.5)
+            num.value = Math.abs(-10) // 음수를 양수로 */
+            /* txt.value = Math.round(123.456)
+            num.value = Math.round(1.6) // 반올림 */
+            /* txt.value = Math.ceil(123.456)
+            num.value = Math.ceil(1.2) // 올림 */
+            /* txt.value = Math.floor(Math.random()*5) // 0~5사이 숫자 랜덤
+            num.value = Math.floor(Math.random()*10) // 0~10사이 숫자 랜덤 */
+            /* txt.value = Math.random() 
+            num.value = Math.random() //랜덤 */
+            /* txt.value = Math.PI
+            num.value = Math.PI //원주율 */
+        })
+    </script>
+</body>
+</html>
